@@ -51,6 +51,8 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
+    "ai_django_core",
+    "django_extensions",
     "rest_framework",
     "rest_framework.authtoken",
 )
