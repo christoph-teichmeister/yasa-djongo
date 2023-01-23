@@ -1,8 +1,11 @@
 from ai_django_core.models import CommonInfo
 from django.db import models
+from djongo.models import ObjectIdField
 
 
 class Transaction(CommonInfo):
+    _id = ObjectIdField()
+
     description = models.TextField(max_length=500)
     paid_for = models.ForeignKey(
         "account.User", related_name="owes_transactions", on_delete=models.CASCADE

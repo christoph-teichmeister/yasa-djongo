@@ -1,11 +1,14 @@
 from ai_django_core.models import CommonInfo
 from django.db import models
+from djongo.models import ObjectIdField
 
 
 class Room(CommonInfo):
     class StatusChoices(models.IntegerChoices):
         OPEN = 1, "Open"
         CLOSED = 2, "Closed"
+
+    _id = ObjectIdField()
 
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
@@ -26,6 +29,8 @@ class Room(CommonInfo):
 
 
 class UserTransactionsForRoom(models.Model):
+    _id = ObjectIdField()
+
     paid_by = models.ForeignKey("account.User", on_delete=models.CASCADE)
 
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
