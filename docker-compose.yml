@@ -1,0 +1,25 @@
+services:
+  backend:
+    container_name: yasa_backend
+    build: .
+    command: sh ./start_backend_local.sh
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+        - mongodb
+
+  mongodb:
+    container_name: yasa_mongodb
+    image: mongo:5.0
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=rootpassword
+    volumes:
+      - yasa_mongodb_data_container:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  yasa_mongodb_data_container:
