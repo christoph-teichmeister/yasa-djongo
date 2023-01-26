@@ -1,11 +1,9 @@
-FROM python:3.11.0-alpine
+FROM python:3.10
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-RUN apk update \
-    && apk add --virtual build-deps gcc python3-dev musl-dev \
-    && apk del build-deps
+RUN apt-get update && apt-get -y upgrade
 
 WORKDIR /app
 
@@ -16,4 +14,4 @@ RUN pip install -U pip pipenv
 
 RUN pipenv install --system --deploy
 
-COPY . /app/
+COPY ./ /app/

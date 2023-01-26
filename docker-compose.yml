@@ -4,7 +4,7 @@ services:
     build: .
     command: sh ./start_backend_local.sh
     volumes:
-      - .:/app
+      - ./:/app
     ports:
       - "8000:8000"
     depends_on:
