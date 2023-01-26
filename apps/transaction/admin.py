@@ -6,8 +6,7 @@ from bson import ObjectId
 from django.contrib.admin import register
 from djongo.admin import ModelAdmin
 
-from account.models import User
-from transaction.models import Transaction
+from apps.transaction.models import Transaction
 
 
 @register(Transaction)
@@ -19,6 +18,7 @@ class TransactionAdmin(ModelAdmin, CommonInfoAdminMixin, AdminRequestInFormMixin
     _mongo_id_fields = ("created_by", "lastmodified_by", "paid_for")
 
     def get_form(self, request, obj=None, change=False, **kwargs):
+        print("BREAKPOINT")
         if request.POST:
             # Remember old state
             _mutable = request.POST._mutable

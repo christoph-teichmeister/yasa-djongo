@@ -60,9 +60,9 @@ THIRD_PARTY_APPS = (
 )
 
 LOCAL_APPS = (
-    "account",
-    "room",
-    "transaction",
+    "apps.account",
+    "apps.room",
+    "apps.transaction",
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -78,7 +78,7 @@ MIDDLEWARE = (
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 )
 
-ROOT_URLCONF = "config.urls"
+ROOT_URLCONF = "apps.config.urls"
 
 TEMPLATES = (
     {
@@ -96,7 +96,7 @@ TEMPLATES = (
     },
 )
 
-WSGI_APPLICATION = "config.wsgi.application"
+WSGI_APPLICATION = "apps.config.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
